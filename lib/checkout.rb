@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'pricing_rules'
+require_relative 'pricing_rules'
 
 # | This class works as a calculator and scanner.                           |
 # | It will scan all the product inside our actual basket                   |
