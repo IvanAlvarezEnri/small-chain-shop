@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'product'
+require_relative 'product'
 # | This class manage the avalaible product list and the active discounts |
 # | This class manage the avalaible product code of each product too      |
 # | It also calculate the final price of a product                        |
