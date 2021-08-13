@@ -18,15 +18,15 @@ RSpec.describe Checkout do
       expect(checkout.basket[0]).to eq 'GR1'
     end
 
-    # it 'change rules' do
-    #   pricing_rules = PricingRules.new
-    #   checkout = Checkout.new(pricing_rules)
-    #   expect(checkout.rules.product_list['GR1'].name).to eq 'Green Tea'
-    #   pricing_rulesFalse = PricingRules.new
-    #   pricing_rulesFalse.delete_product('GR1')
-    #   checkout.change_rules(pricing_rulesFalse)
-    #   expect(checkout.rules.product_list['GR1']).to eq nil
-    # end
+    it 'change rules' do
+      pricing_rules = PricingRules.new
+      checkout = Checkout.new(pricing_rules)
+      expect(checkout.rules.product_list['GR1'].name).to eq 'Green Tea'
+      pricing_rulesFalse = PricingRules.new
+      pricing_rulesFalse.delete_product('GR1')
+      checkout.change_rules(pricing_rulesFalse)
+      expect(checkout.rules.product_list['GR1']).to eq nil
+    end
   end
 
   context 'final tests' do

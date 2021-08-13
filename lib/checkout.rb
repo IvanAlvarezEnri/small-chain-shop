@@ -11,9 +11,9 @@ class Checkout
     @basket = []
   end
 
-  #   def change_rules(pricing_rules)
-  #     pricing_rules.instance_of? PricingRules ? @rules = pricing_rules : nil
-  #   end
+  def change_rules(pricing_rules)
+    @rules = pricing_rules
+  end
 
   def scan(prod_code)
     @basket << prod_code
