@@ -49,5 +49,20 @@ RSpec.describe PricingRules do
       expect(pricing_rules.get_price('CF1', 3)).to eq 22.46
       expect(pricing_rules.get_price('CF1', 10)).to eq 74.87
     end
+
+    it 'creates a new discount' do
+      pricing_rules.new_product('HM1', 'Ham', 10)
+      pricing_rules.add_discount('HM1', '_amount > 2 ', 'product_price * (_amount-1)')
+      expect(pricing_rules.get_price('HM1', 1)).to eq 10
+      expect(pricing_rules.get_price('HM1', 3)).to eq 20
+      expect(pricing_rules.get_price('HM1', 4)).to eq 30
+    end
+
+    it 'remove a discount' do
+      pricing_rules.remove_discount('HM1')
+      expect(pricing_rules.get_price('HM1', 1)).to eq 10
+      expect(pricing_rules.get_price('HM1', 3)).to eq 30
+      expect(pricing_rules.get_price('HM1', 4)).to eq 40
+    end
   end
 end
