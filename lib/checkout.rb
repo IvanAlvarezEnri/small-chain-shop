@@ -2,6 +2,14 @@
 
 require 'pricing_rules'
 
+# | This class works as a calculator and scanner.                           |
+# | It will scan all the product inside our actual basket                   |
+# | It will also reset the basket when needed  and calculate the total      |
+# | We can have multiple RulePricing created and change it whenever we want |
+# | For example if we want Summer discounts, we can create a price rule     |
+# | and changed it only for Summer, then have another price rule to the rest|
+# | of the year                                                             |
+
 class Checkout
   attr_accessor :basket
   attr_reader :rules
@@ -17,6 +25,10 @@ class Checkout
 
   def scan(prod_code)
     @basket << prod_code
+  end
+
+  def reset_basket
+    @basket = []
   end
 
   def total

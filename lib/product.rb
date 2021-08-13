@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
+# | This class works as the Product objects, it has the name and price of |
+# | the product                                                           |
+# | Added security to check if condition and formulas are correct         |
+# | we need that because the eval method is risky                         |
 class Product
+
   attr_accessor :name, :price
   attr_reader :condition, :price_formula_true, :price_formula_false
 
