@@ -12,7 +12,7 @@ class Checkout
   end
 
   def change_rules(pricing_rules)
-    @rules = pricing_rules
+    @rules = pricing_rules if pricing_rules.is_a?(PricingRules)
   end
 
   def scan(prod_code)

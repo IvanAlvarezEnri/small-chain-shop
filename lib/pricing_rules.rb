@@ -11,12 +11,20 @@ class PricingRules
                       'CF1' => Product.new('Coffe', 11.23, '_amount >= 3', '(product_price * 2 / 3) * _amount') }
   end
 
-  def new_product(product_code, name, price, _condition, price_formula_true = nil, price_formula_false = 'product_price * _amount')
-    @product_list[product_code] = Product.new(name, price, price_formula_true, price_formula_false)
+  def new_product(product_code, name, price, condition = 'false', price_formula_true = 'product_price * _amount', price_formula_false = 'product_price * _amount')
+    @product_list[product_code] = Product.new(name, price, condition, price_formula_true, price_formula_false)
   end
 
   def delete_product(product_code)
     @product_list.delete(product_code)
+  end
+
+  def add_discount(product, condition, price_formula_true, price_formula_false = 'product_price * _amount')
+    product_list[product].add_discount(condition, price_formula_true, price_formula_false)
+  end
+
+  def remove_discount(product)
+    product_list[product].remove_discount
   end
 
   def get_price(product, _amount)

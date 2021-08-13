@@ -27,6 +27,13 @@ RSpec.describe Checkout do
       checkout.change_rules(pricing_rulesFalse)
       expect(checkout.rules.product_list['GR1']).to eq nil
     end
+    it 'change rules incorrect, doesnt change rules' do
+      pricing_rules = PricingRules.new
+      checkout = Checkout.new(pricing_rules)
+      expect(checkout.rules.product_list['GR1'].name).to eq 'Green Tea'
+      checkout.change_rules(nil)
+      expect(checkout.rules.product_list['GR1'].name).to eq 'Green Tea'
+    end
   end
 
   context 'final tests' do
