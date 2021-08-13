@@ -41,14 +41,14 @@ RSpec.describe Checkout do
       total = co.total
       expect(total).to eq 22.45
     end
-    it 'Basket: GR1,SR1,GR1,GR1,CF1' do
+    it 'Basket: GR1,GR1' do
       co = Checkout.new(pricing_rules)
       co.scan('GR1')
       co.scan('GR1')
       total = co.total
       expect(total).to eq 3.11
     end
-    it 'Basket: GR1,SR1,GR1,GR1,CF1' do
+    it 'Basket: SR1,SR1,GR1,SR1' do
       co = Checkout.new(pricing_rules)
       co.scan('SR1')
       co.scan('SR1')
@@ -57,7 +57,7 @@ RSpec.describe Checkout do
       total = co.total
       expect(total).to eq 16.61
     end
-    it 'Basket: GR1,SR1,GR1,GR1,CF1' do
+    it 'Basket: GR1,CF1,SR1,CF1,CF1' do
       co = Checkout.new(pricing_rules)
       co.scan('GR1')
       co.scan('CF1')
